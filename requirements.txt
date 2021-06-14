@@ -1,3 +1,5 @@
 tensorflow==2.5.0
 numpy
 matplotlib
+tweepy
+pandas
