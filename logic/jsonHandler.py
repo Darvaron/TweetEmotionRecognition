@@ -15,8 +15,9 @@ def get_text(tweet):
         text = tweet_json['text']
         # print(tweet_json)
         listwords = text.split(' ')
-        special_char = ['/', '@', 'RT', '...']
+        special_char = ['/', '@', 'RT', '…', '//']
         required_words = ['a', 'the', 'i', 'you', 'u', 'and']
+        #FALTA FILTRAR MÁS CARACTERES ESPECIAL, MAYOR TAMAÑO REQUERIDO, EMOTICONS ETC
         if any(rw in w for rw in required_words for w in listwords):  # if contains required words
             text = [w for w in listwords if not any(ch in w for ch in special_char)]  # deletes special characters
             if len(text) > 5:  # if the text is longer than 5 words
