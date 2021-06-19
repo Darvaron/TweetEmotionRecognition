@@ -21,5 +21,5 @@ ACCESS_TOKEN_SECRET
 - for each word:  
     * Some symbols are removed from the tweets in certain cases. (for example, periods at the end of the words)
     * The word is classified in: word, user, url, hashtag or unidentified.  
-    * The word is reaplce by word, <usermention>, <url>, <hashtag>, word respectively.  
+    * The string is reaplced by its value, \<usermention>, \<url>, \<hashtag> or its value respectively.  
 - The tweet is passed to sequence (one hot encoding and word embedding) and finally truncated and padded.
