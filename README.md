@@ -17,7 +17,7 @@ ACCESS_TOKEN_SECRET
 - The tweet is lowercased.  
 - '\n' are replaced by ' ' for all the '\n' in the tweet, if there's a '\n' at the end it is replaced by ''
 - duplicated spaces are deleted.  
-- '' are deleted.  
+- '' (blank spaces) are deleted.  
 - for each word:  
     * Some symbols are removed from the tweets in certain cases. (for example, periods at the end of the words)
     * The word is classified in: word, user, url, hashtag or unidentified.  
