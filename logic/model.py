@@ -1,4 +1,7 @@
-import os, pickle
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
+
+import pickle
 import numpy as np
 import tensorflow as tf
 from tensorflow.keras.preprocessing.sequence import pad_sequences
@@ -13,6 +16,7 @@ class Model():
         global padded_test
 
         # Model
+        print('Loading model ...')
         self.modelPath = os.path.dirname(os.path.realpath(__file__))[:-5] + 'EmotionRmodel\EmotionRmodel'
         self.Emodel = tf.keras.models.load_model(self.modelPath)
         print('Model loaded successfully')

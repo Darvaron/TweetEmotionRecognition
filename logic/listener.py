@@ -6,7 +6,7 @@ class TwitterListener(StreamListener):
 
     def __init__(self, model):
         '''
-        Setup
+        Constructor - Setup
         :param model: defines de RNN to be used
         '''
         self.model = model
@@ -19,7 +19,7 @@ class TwitterListener(StreamListener):
         '''
         tweet = logic.jsonHandler.get_text(raw_data)
         if tweet != '':
-            print('Tweet: {}'.format(tweet))
+            #print('Tweet: {}'.format(tweet))
             print('Predicted emotion: {}\n'.format(self.model.predict(tweet)))
         return True
 

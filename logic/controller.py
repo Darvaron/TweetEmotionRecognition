@@ -4,10 +4,16 @@ from logic.twitterController import TwitterController
 
 class Controller():
 
-    def __init__(self, h):
+    def __init__(self):
         '''
-        Class on charge of setting up the model and the twitterController as well
-        :param h: hashtag or word to be searched
+        Method on charge of setting up the model and the twitterController as well
         '''
-        self.model = Model()
-        self.twitterC = TwitterController(h, self.model)
+        self.twitterC = TwitterController(Model())
+
+    def search(self, h):
+        '''
+        Reference TwitterController.search()
+        :param h: Hashtag or word to search
+        :return: None
+        '''
+        self.twitterC.search(h)
