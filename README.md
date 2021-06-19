@@ -19,8 +19,7 @@ ACCESS_TOKEN_SECRET
 - duplicated spaces are deleted.  
 - '' are deleted.  
 - for each word:  
-    * ..., ’, ', “, ”, .”, (, ", ), !, ? are removed from the word.  
-    * ,, \, ., ;, :, ‘, ’, ", ', ! are removed at the end - some are redundant.  
+    * Some symbols are removed from the tweets in certain cases. (for example, periods at the end of the words)
     * The word is classified in: word, user, url, hashtag or unidentified.  
     * The word is reaplce by word, <usermention>, <url>, <hashtag>, word respectively.  
-- Then is passed to sequence (one hot encoding and word embedding) and finally truncated and padded.
+- The tweet is passed to sequence (one hot encoding and word embedding) and finally truncated and padded.
