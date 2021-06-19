@@ -19,9 +19,8 @@ ACCESS_TOKEN_SECRET
 - duplicated spaces are deleted.  
 - '' are deleted.  
 - for each word:  
-    * '...', '’', "'", '“', '”', '.”', '(', '"', ')', '!', '?' are removed from the word.  
-    * ',', '\'', '.', ';', ':', '‘', '’', '"', "'", '!' are removed at the end - some are redundant.  
+    * ..., ’, ', “, ”, .”, (, ", ), !, ? are removed from the word.  
+    * ,, \, ., ;, :, ‘, ’, ", ', ! are removed at the end - some are redundant.  
     * The word is classified in: word, user, url, hashtag or unidentified.  
     * The word is reaplce by word, <usermention>, <url>, <hashtag>, word respectively.  
-    * The resulting string is passed to the predict method.  
-    * In the predict method the string is passed to sequence and the truncated and padded.
+- Then is passed to sequence (one hot encoding and word embedding) and finally truncated and padded.
