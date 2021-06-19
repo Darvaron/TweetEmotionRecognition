@@ -13,3 +13,15 @@ CONSUMER_SECRET
 ACCESS_TOKEN
 ACCESS_TOKEN_SECRET
 ```
+### How data is preproccesed  
+- The tweet is lowercased.  
+- '\n' are replaced by ' ' for all the '\n' in the tweet, if there's a '\n' at the end it is replaced by ''
+- duplicated spaces are deleted.  
+- '' are deleted.  
+- for each word:  
+    * '...', '’', "'", '“', '”', '.”', '(', '"', ')', '!', '?' are removed from the word.  
+    * ',', '\'', '.', ';', ':', '‘', '’', '"', "'", '!' are removed at the end - some are redundant.  
+    * The word is classified in: word, user, url, hashtag or unidentified.  
+    * The word is reaplce by word, <usermention>, <url>, <hashtag>, word respectively.  
+    * The resulting string is passed to the predict method.  
+    * In the predict method the string is passed to sequence and the truncated and padded.

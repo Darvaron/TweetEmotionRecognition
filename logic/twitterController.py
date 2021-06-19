@@ -2,11 +2,12 @@ import os
 from logic.listener import TwitterListener
 from tweepy import OAuthHandler
 from tweepy import Stream
+from logic.model import Model
 
 
 class TwitterController():
 
-    def __init__(self, model):
+    def __init__(self):
         '''
         Constructor - setup and authentication process
         :param model: RNN
@@ -20,30 +21,20 @@ class TwitterController():
 
         self.auth = OAuthHandler(tokens[0][:-1], tokens[1][:-1])
         self.auth.set_access_token(tokens[2][:-1], tokens[3])
-        self.model = model
+        self.model = Model()
 
-    def search(self, h):
+    def search(self, h, tweets):
         '''
         Searchs tweets with a given hashtag or keyword filtering only tweets in english
         :param h: hashtag or keyword
+        :param tweets: number of tweets between plots
         '''
         # Streaming setup
-        self.listener = TwitterListener(self.model)
-        self.stream = Stream(self.auth, self.listener)
-
-        print('Searching: {}'.format(h))
-        self.stream.filter(track=[h], languages=['en'])
-
-# class MyStream(Stream):
-#
-#     def on_status(self, status):
-#         if hasattr(status, "retweeted_status"):  # Check if Retweet
-#             try:
-#                 print(status.retweeted_status.extended_tweet["full_text"])
-#             except AttributeError:
-#                 print(status.retweeted_status.text)
-#         else:
-#             try:
-#                 print(status.extended_tweet["full_text"])
-#             except AttributeError:
-#                 print(status.text)
+        try:
+            self.listener = TwitterListener(self.model, tweets)
+            self.stream = Stream(self.auth, self.listener)
+            print('Searching: {}'.format(h))
+            self.stream.filter(track=[h], languages=['en'])
+        except Exception as e:
+            print('Error: {}'.format(e))
+            #Known issue ('Connection broken: IncompleteRead(0 bytes read)', IncompleteRead(0 bytes read)) tweepy
