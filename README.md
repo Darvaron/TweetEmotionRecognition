@@ -1,5 +1,5 @@
 # TweetEmotionDetection
-Emotion detection in tweets in real time from a given hashtag.
+Emotion detection in tweets in real time from a given word or hashtag.
 
 ### Installation
 ```
