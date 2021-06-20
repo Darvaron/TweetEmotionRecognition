@@ -83,11 +83,11 @@ def transform_word(string_v):
 
 def get_text(tweet):
     '''
-    Extracts relevant data from a tweet, it looks up if there's any of the required words (i, and, ...) of the tweet,
-    if don't ignores it, deletes words that contains some special characters such as / @ ... and so on,
-    if the final text doesn't have more tan 5 words it won't be returned
+    Extracts relevant data from a tweet
+    It replaces the \n char, delete blank spaces and uses the transform_word method with every word in the tweet,
+    then it returns the text of the tweet to listener->on_data
     :param tweet: json file in string
-    :return: processed text ready to be used on the RNN
+    :return: processed text ready to be used proccesed in model.py
     '''
     # print('Loading tweet ...\n')
 
